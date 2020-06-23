@@ -1,8 +1,3 @@
-var iframe_DOM = document.getElementById("slide").contentDocument;
-
-iframe_DOM.querySelector(".navigate-right").addEventListener('click', function(){send_msg("droite")});
-
-iframe_DOM.querySelector(".navigate-left").addEventListener('click',function(){send_msg("gauche")});
 
 
 var socket = io();
@@ -23,4 +18,40 @@ function send_msg(msg){
 }
 
 
+
+var iframe_DOM = document.getElementById("slide").contentDocument;
+
+
+
+//var leftBtn =iframe_DOM.querySelector(".navigate-left"); 
+
+//var rightBtn =iframe_DOM.querySelector(".navigate-right"); 
+
+
+
+//rightBtn.addEventListener('click', function(){send_msg("droite")});
+//leftBtn.addEventListener('click', function(){send_msg("gauche")});
+
+
+
+
+var iframe_WIN = document.getElementById("slide").contentWindow;
+
+function change_page(number){
+
+	iframe_WIN.postMessage( JSON.stringify({ method: 'slide', args: [ number ] }), '*' );
+
+}
+
+
+
+window.addEventListener( 'message', event => {
+		  var data = JSON.parse( event.data );
+		  if( data.namespace === 'reveal' && data.eventName === 'slidechanged' ) {
+				console.log("TEST");		
+		  }
+} );
+
+
+change_page(2);
 
