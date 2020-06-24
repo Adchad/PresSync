@@ -8,8 +8,6 @@ socket.on('connect', function() { console.log("CONNECTION");});
 
 socket.emit("message" , "ceci est un message");
 
-socket.on("message", function() { 
-		document.querySelector(".testclass").innerHTML = "MESSAGE REçU"; });
 
 document.querySelector(".btn").addEventListener('click', function(){send_msg("bouton exterieur")});
 
@@ -43,6 +41,15 @@ function change_page(number){
 
 }
 
+socket.on("message", function(msg) { 
+		document.querySelector(".testclass").innerHTML ="message reçu : " +  msg;
+
+		if(msg == "change page"){
+				change_page(2);
+		}
+
+});
+
 
 window.addEventListener( 'message', event => {
   var data = JSON.parse( event.data );
@@ -52,6 +59,5 @@ window.addEventListener( 'message', event => {
 } );
 
 
-change_page(2);
 
 

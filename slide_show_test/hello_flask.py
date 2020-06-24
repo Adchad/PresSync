@@ -23,11 +23,10 @@ def index():
 def handle_message(message):
         print('message reçu: ' + message )
         send("Voici le message de retour")
+        send("change page")
 
 
 if __name__ == '__main__':
     APP.debug= True
     socketio.run(APP)
-
-
 
