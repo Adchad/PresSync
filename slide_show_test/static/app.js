@@ -44,14 +44,14 @@ function change_page(number){
 }
 
 
-
 window.addEventListener( 'message', event => {
-		  var data = JSON.parse( event.data );
-		  if( data.namespace === 'reveal' && data.eventName === 'slidechanged' ) {
-				console.log("TEST");		
-		  }
+  var data = JSON.parse( event.data );
+  if( data.namespace === 'reveal' && data.eventName === 'slidechanged' ) {
+		  send_msg("page " + data.state.indexh);
+ }
 } );
 
 
 change_page(2);
+
 
