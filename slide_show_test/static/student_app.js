@@ -1,4 +1,4 @@
-var socket = io();
+/*var socket = io();
 var SYNC=true;
 var current_page=0;
 socket.on('connect', function() { console.log("CONNECTION");});
@@ -43,6 +43,19 @@ socket.on('message', function(msg) {
 					change_page(msg.substr(12,3));
 				}
 		}
+
+});*/
+
+
+window.addEventListener('load', function() {
+
+
+    var frame = document.getElementById('slides_eleve').contentDocument;
+    var frameBody = frame.body;
+    var scriptElement = frame.createElement('script');
+    scriptElement.src = '/static/injection_eleve.js';
+
+    frameBody.appendChild(scriptElement);
 
 });
 
