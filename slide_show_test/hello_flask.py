@@ -11,6 +11,9 @@ def index():
     return flask.render_template('index.html')
 
 
+@APP.route('/student')
+def student():
+    return flask.render_template('student.html')
 
 #@APP.route('/hello/<name>/')
 #def hello(name):
@@ -18,14 +21,17 @@ def index():
  #     return flask.render_template('hello.html', name=name)
 
 def change_page(page):
-    send("change_page "+str(page))
+    send("change_page "+ page, broadcast= True)
 
    
 @socketio.on('message')
 def handle_message(message):
         print('message reçu: ' + message )
-        send("Voici le message de retour")
-        change_page(2)
+        send("test",broadcast= True)
+        if(message[0:4] == "page"):
+            print("BOOOOM")
+           # send("test")
+            change_page(message[5])
 
 if __name__ == '__main__':
     APP.debug= True

@@ -41,7 +41,7 @@ function change_page(number){
 
 }
 
-socket.on("message", function(msg) { 
+/*socket.on("message", function(msg) { 
 		document.querySelector(".testclass").innerHTML ="message reçu : " +  msg;
 
 		if(msg.substr(0,11) == "change_page"){
@@ -49,7 +49,7 @@ socket.on("message", function(msg) {
 		}
 
 });
-
+*/
 
 window.addEventListener( 'message', event => {
   var data = JSON.parse( event.data );
