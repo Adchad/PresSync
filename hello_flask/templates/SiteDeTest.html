@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang='en'>
+	<head>
+		<meta charset="UTF-8" />
+		<link type="text/css" rel="stylesheet" href="{{ url_for('static',
+              filename='SiteDeTest.css')}}" />
+		<title> Meilleur site Web de France</title>
+		
+
+	</head>
+	<body>
+		<header>
+			<h1>
+				Bienvenue sur le meilleur site web de France. 
+			</h1>
+		</header>
+		<div>
+			<form>
+				<input type="text" id="name" name="name" minlength="1" maxlength="50">
+			</form>
+			<p>Veuillez saisir votre nom</p>
+			<button id='b1'>Cliquez Moi</button>
+			<button id='b2'>Dévoiler la vérité</button>
+
+			<script type="text/javascript" src="{{ url_for('static',
+              filename='SiteDeTest.js')}}"></script>
+		</body>

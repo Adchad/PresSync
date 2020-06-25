@@ -1,0 +1,22 @@
+h1{
+	font-size: 3em;
+	text-align: center;
+	border: 3px black outset;
+	border-radius: 10px;
+	box-shadow: 6px 6px 10px black;
+	width: 55%;
+	margin-left:auto;
+	margin-right: auto;
+	background-image: url(dégradé.jpg);
+	background-size: cover;
+} 
+
+input{
+	margin-top:100px;
+}
+
+body
+{
+	background-image: url(dégradé.jpg);
+	background-size: cover;
+}
