@@ -11,8 +11,12 @@
     <body>
 		<p class="testclass"> BLABLA </p>
 		<button class="btn"></button>
-		<iframe src="/static/reveal.js-master/index.html" id="slide"></iframe>
-		<script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>		
+		<iframe src="/static/reveal.js-master/demo.html" id="slides_professeur"></iframe>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
+
+    <iframe src="/static/reveal.js-master/demo.html" id="slides_eleve"></iframe>
+    <button id="btn_sync">Synchronisation</button>
+
 
 		<script src="{{ url_for('static', filename='app.js')}}"></script>
     </body>

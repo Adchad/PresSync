@@ -1,35 +1,21 @@
-
+/*
 
 var socket = io();
-
 socket.on('connect', function() { console.log("CONNECTION");});
-
-
-
-socket.emit("message" , "ceci est un message");
-
-
-document.querySelector(".btn").addEventListener('click', function(){send_msg("bouton exterieur")});
 
 function send_msg(msg){
 	socket.emit("message" , msg);
 }
 
-
-
 var iframe_DOM = document.getElementById("slide").contentDocument;
 
+//var leftBtn =iframe_DOM.querySelector(".navigate-left");
 
-
-//var leftBtn =iframe_DOM.querySelector(".navigate-left"); 
-
-//var rightBtn =iframe_DOM.querySelector(".navigate-right"); 
-
+//var rightBtn =iframe_DOM.querySelector(".navigate-right");
 
 
 //rightBtn.addEventListener('click', function(){send_msg("droite")});
 //leftBtn.addEventListener('click', function(){send_msg("gauche")});
-
 
 
 
@@ -41,7 +27,7 @@ function change_page(number){
 
 }
 
-socket.on("message", function(msg) { 
+socket.on("message", function(msg) {
 		document.querySelector(".testclass").innerHTML ="message reçu : " +  msg;
 
 		if(msg == "change page"){
@@ -49,7 +35,6 @@ socket.on("message", function(msg) {
 		}
 
 });
-
 
 window.addEventListener( 'message', event => {
   var data = JSON.parse( event.data );
@@ -59,5 +44,27 @@ window.addEventListener( 'message', event => {
 } );
 
 
+*/
+
+/*****************************************************************/
+
+window.addEventListener('load', function() {
+
+    var frame = document.getElementById('slides_professeur').contentDocument;
+    var frameBody = frame.body;
+    var scriptElement = frame.createElement('script');
+    scriptElement.src = '/static/injection_prof.js';
+
+    frameBody.appendChild(scriptElement);
 
 
+
+
+    var frame = document.getElementById('slides_eleve').contentDocument;
+    var frameBody = frame.body;
+    var scriptElement = frame.createElement('script');
+    scriptElement.src = '/static/injection_eleve.js';
+
+    frameBody.appendChild(scriptElement);
+
+});
