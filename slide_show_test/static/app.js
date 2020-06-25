@@ -44,8 +44,8 @@ function change_page(number){
 socket.on("message", function(msg) { 
 		document.querySelector(".testclass").innerHTML ="message reçu : " +  msg;
 
-		if(msg == "change page"){
-				change_page(2);
+		if(msg.substr(0,11) == "change_page"){
+				change_page(msg.substr(12,1));
 		}
 
 });

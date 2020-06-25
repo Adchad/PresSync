@@ -17,16 +17,19 @@ def index():
 
  #     return flask.render_template('hello.html', name=name)
 
+def change_page(page):
+    send("change_page "+str(page))
 
    
 @socketio.on('message')
 def handle_message(message):
         print('message reçu: ' + message )
         send("Voici le message de retour")
-        send("change page")
-
+        change_page(2)
 
 if __name__ == '__main__':
     APP.debug= True
     socketio.run(APP)
+        
+
 
