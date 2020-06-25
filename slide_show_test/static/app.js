@@ -3,6 +3,7 @@
 var socket = io();
 socket.on('connect', function() { console.log("CONNECTION");});
 
+
 function send_msg(msg){
 	socket.emit("message" , msg);
 }
@@ -30,16 +31,17 @@ function change_page(number){
 socket.on("message", function(msg) {
 		document.querySelector(".testclass").innerHTML ="message reçu : " +  msg;
 
-		if(msg == "change page"){
-				change_page(2);
+		if(msg.substr(0,11) == "change_page"){
+				change_page(msg.substr(12,1));
 		}
 
 });
 
+
 window.addEventListener( 'message', event => {
   var data = JSON.parse( event.data );
   if( data.namespace === 'reveal' && data.eventName === 'slidechanged' ) {
-		  send_msg("page " + data.state.indexh);
+		  send_msg("page " + ("00"+data.state.indexh).slice (-3));
  }
 } );
 
