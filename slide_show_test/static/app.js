@@ -53,7 +53,7 @@ function change_page(number){
 window.addEventListener( 'message', event => {
   var data = JSON.parse( event.data );
   if( data.namespace === 'reveal' && data.eventName === 'slidechanged' ) {
-		  send_msg("page " + data.state.indexh);
+		  send_msg("page " + ("00"+data.state.indexh).slice (-3));
  }
 } );
 

@@ -28,7 +28,7 @@ def change_page(page):
 def handle_message(message):
         print('message reçu: ' + message )
         if(message[0:4] == "page"):
-            change_page(message[5])
+            change_page(message[5:8])
 
 if __name__ == '__main__':
     APP.debug= True

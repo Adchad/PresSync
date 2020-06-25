@@ -18,21 +18,29 @@ document.querySelector('.btn').addEventListener('click', function(){
 		SYNC= !SYNC;
 		if(SYNC){
 				change_page(current_page);
+
+				document.querySelector('.btn').style.backgroundColor = "white";
 		}
+		else{
+
+				document.querySelector('.btn').style.backgroundColor = "red";
+		}
+
+
+		
 		
 });
 		
 
 socket.on('message', function(msg) { 
-		console.log("message reçu"+msg);
 
 		if(msg.substr(0,11) == "change_page"){
 
-				current_page=msg.substr(12,1);
+				current_page=msg.substr(12,3);
 
 				if(SYNC){
 
-					change_page(msg.substr(12,1));
+					change_page(msg.substr(12,3));
 				}
 		}
 
