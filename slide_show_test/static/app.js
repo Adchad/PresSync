@@ -6,7 +6,7 @@ socket.on('connect', function() { console.log("CONNECTION");});
 
 
 
-socket.emit("message" , "ceci est un message");
+socket.emit("message" , "Message prof");
 
 
 document.querySelector(".btn").addEventListener('click', function(){send_msg("bouton exterieur")});

@@ -27,10 +27,7 @@ def change_page(page):
 @socketio.on('message')
 def handle_message(message):
         print('message reçu: ' + message )
-        send("test",broadcast= True)
         if(message[0:4] == "page"):
-            print("BOOOOM")
-           # send("test")
             change_page(message[5])
 
 if __name__ == '__main__':
