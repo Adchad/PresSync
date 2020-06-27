@@ -16,35 +16,33 @@ var h,f,l,d=String.fromCharCode;t.exports={version:"2.1.2",encode:a,decode:u}},f
 console.log("script injecté dans l'iframe eleve")
 
 var socket = io();
-var synchonized = false;
+var synchronized = false;
 var desync_protection = false; //quand le présentateur déclenche le changement de slide, il faut préciser que ça ne désync pas l'élève
+
 var bouton = parent.document.getElementById("btn_sync");
+let gif = document.createElement('img');
+gif.src="/static/giphy.gif";
 
 bouton.addEventListener("click", function () {
-    console.log("Eleve synchronisé");
-    //synchonized = true;
+    //synchronized = true;
     //il faut aller demander au serveur à quel slide il faut aller
     socket.emit('sliderequest');
 
-    if (synchonized === false) {
-    let gif = document.createElement('img');
-    gif.src="/static/giphy.gif";
-   	/*gif.textContent = "fejziofzjfiojojzojojzeofj";*/
-    document.body.appendChild(gif);
+    if (synchronized === false) {
+    console.log("Eleve synchronisé");
+    parent.document.body.appendChild(gif);
     synchronized = true;
-}
-	else{
-		document.body.removeChild(gif);
+} else{
+    console.log("Eleve dé-synchronisé");
+		parent.document.body.removeChild(gif);
 		synchronized = false;
 	}
-
-
 
 });
 
 /* ====>  Le serveur informe que la slide du prof a change */
 socket.on('update slide', function(index){
-  if(synchonized===true) {
+  if(synchronized===true) {
     console.log("il faut aller à la slide : " + index);
     desync_protection = true;
     Reveal.slide(index);
@@ -58,7 +56,9 @@ Reveal.on( 'slidechanged', event => {
   // event.previousSlide, event.currentSlide, event.indexh, event.
   if(desync_protection === false) {
     console.log("l'élève se désynchronise");
-    synchonized = false
+    synchronized = false
+    parent.document.body.removeChild(gif);
+    synchronized = false;
   } else {
     desync_protection = false;
   }

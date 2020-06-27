@@ -27,12 +27,12 @@ document.querySelector('.btn').addEventListener('click', function(){
 		}
 
 
-		
-		
-});
-		
 
-socket.on('message', function(msg) { 
+
+});
+
+
+socket.on('message', function(msg) {
 
 		if(msg.substr(0,11) == "change_page"){
 
@@ -58,7 +58,3 @@ window.addEventListener('load', function() {
     frameBody.appendChild(scriptElement);
 
 });
-
-
-
-

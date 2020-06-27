@@ -29,26 +29,28 @@
                 <td width="20%"> </td>
                 <td width="60%" class="titre_de_page">Cours HTML/CSS et Javascript - JC Dufourd</td>
                 <td width="20%"></td>
-                
+
             </tr>
         </table> -->
-		<script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"> 
+		<script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous">
         </script>
 
 
         <div class = "iframe">
-            <iframe src="/static/reveal.js-master/demo.html" class="slides_eleve"></iframe>
+            <iframe src="/static/reveal.js-master/demo.html" id="slides_eleve" width="800" height="400"></iframe>
             <!--<<button id = "btn_sync" class="btn">Synchronisation</button>-->
         </div>
 
+        <!-- Le temps qu'on mette en place la page du prof, et qu'on sépare du coup les scripts, pour pas que app.js lève une erreur en ne trouvant pas l'id "slides_professeur" je rajoute un iframe vide -->
+        <iframe src="" id="slides_professeur" hidden="true"></iframe>
 
-        <div class="container"> 
+        <div class="container">
             <button type="button" id ="btn_sync" class="btn">
             <span>Synchronisation</span>
             </button>
         </div>
 
-        
-		<script src="{{ url_for('static', filename='injection_eleve.js')}}"></script>
+    <!-- C'est le script qui cherche les i frame avec les id slides_eleves ou slides_professeur, et qui injecte les scripts pour mettre des listener sur les changements de slides, et gérer les sockets -->
+		<script src="{{ url_for('static', filename='app.js')}}"></script>
     </body>
 </html>
