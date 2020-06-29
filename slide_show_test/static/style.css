@@ -92,10 +92,11 @@ transform: translateX(-9%) translateY(-25%) rotate(45deg);
 	text-align: center;
 	margin-left:2em;
 	margin-right:auto;
+
 	
 }
 
-.slides_eleve {
+#slides_eleve {
 	width : 1200px;
 	height: 800px;
 	border: 4px solid black;
