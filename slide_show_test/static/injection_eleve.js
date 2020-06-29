@@ -16,8 +16,11 @@ var h,f,l,d=String.fromCharCode;t.exports={version:"2.1.2",encode:a,decode:u}},f
 console.log("script injecté dans l'iframe eleve")
 
 var socket = io();
+
+const room = document.title;
 var synchronized = false;
 var desync_protection = false; //quand le présentateur déclenche le changement de slide, il faut préciser que ça ne désync pas l'élève
+socket.emit('join',room);
 
 var bouton = parent.document.getElementById("btn_sync");
 let gif = document.createElement('img');
@@ -26,7 +29,7 @@ gif.src="/static/giphy.gif";
 bouton.addEventListener("click", function () {
     //synchronized = true;
     //il faut aller demander au serveur à quel slide il faut aller
-    socket.emit('sliderequest');
+    socket.emit('sliderequest',room);
 
     if (synchronized === false) {
     console.log("Eleve synchronisé");
