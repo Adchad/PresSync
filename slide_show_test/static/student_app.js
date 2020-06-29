@@ -27,12 +27,12 @@ document.querySelector('.btn').addEventListener('click', function(){
 		}
 
 
-
-
+		
+		
 });
+		
 
-
-socket.on('message', function(msg) {
+socket.on('message', function(msg) { 
 
 		if(msg.substr(0,11) == "change_page"){
 
@@ -54,7 +54,11 @@ window.addEventListener('load', function() {
     var frameBody = frame.body;
     var scriptElement = frame.createElement('script');
     scriptElement.src = '/static/injection_eleve.js';
-
+	frame.title = document.title
     frameBody.appendChild(scriptElement);
 
 });
+
+
+
+

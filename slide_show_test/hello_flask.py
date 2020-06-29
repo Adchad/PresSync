@@ -1,7 +1,7 @@
 
 import flask
 
-from flask_socketio import SocketIO, send, emit
+from flask_socketio import SocketIO, send, emit, join_room
 
 APP = flask.Flask(__name__)
 socketio = SocketIO(APP)
@@ -19,6 +19,18 @@ def student():
 #def hello(name):
 
  #     return flask.render_template('hello.html', name=name)
+
+
+@APP.route('/room/<id>/')
+def room1(id):
+
+     return flask.render_template('room1.html',id=id) 
+
+@APP.route('/room/student/<id>/')
+def room1student(id):
+
+     return flask.render_template('room1_student.html',id=id)
+
 
 def change_page(page):
     send("change_page "+ page, broadcast= True)
@@ -41,14 +53,26 @@ def handle_my_custom_event(json):
 
 ##Gestion de l'event perso 'slidechanged' (émis par le professeur)
 @socketio.on('slidechanged')
-def handle_slidechanged(index):
+def handle_slidechanged(data):
+    index = data['index']
+    room = data['room']
     print("yes, la slide est maintenant la slide numero : " + str(index))
-    emit('update slide', index, broadcast=True)
+
+    emit('update slide', index, room=room)
 
 ##Gestion de l'évent perso 'sliderequest' (émis par un élève)
 @socketio.on('sliderequest')
-def handle_sliderequest():
-    emit('sliderequest', broadcast=True)
+def handle_sliderequest(room):
+    emit('sliderequest', room=room)
+
+
+@socketio.on('join')
+def on_join(room):
+    join_room(room)
+    print("room " + room + " entered")
+    emit('messagetest', "room 1 gang !", room="1")
+    emit('messagetest', "room 2 gang !", room="2")
+
 
 ##Lancement du serv
 if __name__ == '__main__':

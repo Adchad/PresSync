@@ -6,7 +6,7 @@ from flask_socketio import SocketIO, send, emit
 
 APP = flask.Flask(__name__)
 socketio = SocketIO(APP)
-SITE_NAME ='http://www.google.com'
+SITE_NAME ='https://perso.telecom-paristech.fr/dufourd/cours'
  
 
 @APP.route('/', defaults={'path': ''})
