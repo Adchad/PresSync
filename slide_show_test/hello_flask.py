@@ -1,10 +1,19 @@
 
 import flask
-
+import requests
 from flask_socketio import SocketIO, send, emit, join_room
 
 APP = flask.Flask(__name__)
 socketio = SocketIO(APP)
+SITE_NAME = 'https://perso.telecom-paristech.fr/dufourd/cours/'
+
+@APP.route('/proxy/', defaults={'path': ''})
+@APP.route('/proxy/<path:path>')
+def proxy(path):
+
+    r = requests.get(f'{SITE_NAME}{path}')
+    return flask.Response(r.content, status=r.status_code, content_type=r.headers['content-type'])
+
 
 @APP.route('/')
 def index():
