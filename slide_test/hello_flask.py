@@ -61,13 +61,6 @@ def handle_sliderequest():
     emit('sliderequest', broadcast=True)
 
 if __name__ == '__main__':
-<<<<<<< HEAD
+
     APP.debug= True
     socketio.run(APP, host='0.0.0.0', port=8080)
-=======
-  #APP.run(host="0.0.0.0")
-    APP.debug = True
-    socketio.run(APP, host="0.0.0.0")
-
-
->>>>>>> ad5c34c2bd64e5c086c7e3f0734dedd3c3b2052e

@@ -10,7 +10,6 @@ SITE_NAME = 'https://perso.telecom-paristech.fr/dufourd/cours/'
 @APP.route('/proxy/', defaults={'path': ''})
 @APP.route('/proxy/<path:path>')
 def proxy(path):
-
     r = requests.get(f'{SITE_NAME}{path}')
     return flask.Response(r.content, status=r.status_code, content_type=r.headers['content-type'])
 
@@ -33,7 +32,7 @@ def student():
 @APP.route('/room/<id>/')
 def room1(id):
 
-     return flask.render_template('room1.html',id=id) 
+     return flask.render_template('room1.html',id=id)
 
 @APP.route('/room/student/<id>/')
 def room1student(id):
@@ -87,6 +86,3 @@ def on_join(room):
 if __name__ == '__main__':
     APP.debug= True
     socketio.run(APP)
-
-
-
