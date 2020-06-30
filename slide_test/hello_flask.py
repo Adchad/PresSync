@@ -6,8 +6,8 @@ from flask_socketio import SocketIO, send, emit
 
 APP = flask.Flask(__name__)
 socketio = SocketIO(APP)
-SITE_NAME ='https://perso.telecom-paristech.fr/dufourd/cours'
- 
+SITE_NAME ='http://nicolassauret.net/s_StyloCRIHN/'
+
 
 @APP.route('/', defaults={'path': ''})
 @APP.route('/<path:path>')
@@ -62,6 +62,3 @@ def handle_sliderequest():
 if __name__ == '__main__':
     APP.debug= True
     socketio.run(APP, host='0.0.0.0', port=8080)
-
-
-
