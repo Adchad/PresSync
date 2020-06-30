@@ -18,6 +18,11 @@ def proxy(path):
 def index():
     return flask.render_template('index.html')
 
+@APP.route('/accueil_eleves')
+def eleves():
+    return flask.render_template('page_accueil_eleves.html')
+
+
 
 @APP.route('/student')
 def student():
