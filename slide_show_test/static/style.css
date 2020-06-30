@@ -1,6 +1,9 @@
 body{
-	background-color: #787878;
+	background-image: url("/static/images/bg2.jpg");
+	background-attachment: fixed; /* Le fond restera fixe */
+
 }
+
 .titre {
 	background-color: #d40019;
 	height: 4em;
@@ -56,13 +59,13 @@ body{
   color: #eeeeee;
   font-weight: 600;
   font-size: 15px;
-  background-color: #000000;
+  /*background-color: #000000;*/
   padding: 15px 50px;
   margin: 0 auto;
   }
 
 .btn span {
-position: relative; 
+position: relative;
 z-index: 1;
 }
 .btn:after {
@@ -93,7 +96,7 @@ transform: translateX(-9%) translateY(-25%) rotate(45deg);
 	margin-left:2em;
 	margin-right:auto;
 
-	
+
 }
 
 #slides_eleve {
