@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset="utf-8" />
+  <title>Page d'accueil professeurs</title>
+  <link type="text/css" rel="stylesheet"
+        href="/static/page_accueil.css">
+</head>
+	<body>
+		<div class="titre">
+
+      <span>
+          <img src="LogoTP.png"  class="logo">
+      </span>
+
+      <span class="titre_de_page">
+           Page d'accueil (professeurs)
+      </span>
+
+    </div>
+
+    <div class="room">
+      <ul>
+        <li> Créer une room :
+    </div>
+    <div class="room_code">
+
+        <button id="btn_prof">
+        <span class=" taille_btn">Room Code</span>
+        </button>
+
+    </div>
+    <script type="text/javascript">
+      let room = document.getElementById("btn_prof")
+      room.addEventListener('click', function(){
+        var code = prompt('Veuillez entrer le code de votre room :')
+      })
+    </script>
+
+  </body>
+  </html>

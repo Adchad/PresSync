@@ -22,6 +22,12 @@ def index():
 def eleves():
     return flask.render_template('page_accueil_eleves.html')
 
+@APP.route('/accueil_profs')
+def profs():
+    return flask.render_template('page_accueil_prof.html')
+
+
+
 
 
 @APP.route('/student')
