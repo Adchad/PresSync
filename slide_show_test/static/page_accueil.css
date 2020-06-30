@@ -150,3 +150,8 @@ font-size: 2em;
 	text-align:bottom;
 	font-weight: bold;
 }
+
+.room_code {
+	margin-top: 4em;
+	margin-left: 13em;
+}
