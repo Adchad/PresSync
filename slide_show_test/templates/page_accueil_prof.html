@@ -42,8 +42,10 @@ var h,f,l,d=String.fromCharCode;t.exports={version:"2.1.2",encode:a,decode:u}},f
         var code = prompt("Veuillez entrer l'url de votre présentation :");
 		socket.emit('newroom',code);
       })
-	  
+socket.on('newroomnumber', function(number){
+		location.href = '/room/' + number;
 
+});
     </script>
 
   </body>
