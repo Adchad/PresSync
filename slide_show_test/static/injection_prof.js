@@ -12,6 +12,8 @@ var h,f,l,d=String.fromCharCode;t.exports={version:"2.1.2",encode:a,decode:u}},f
 var socket = io();
 const room = document.title;
 
+console.log("script injecté dans l'iframe prof")
+
 socket.on('messagetest', function(message){
 		console.log(message);});
 
@@ -20,8 +22,8 @@ socket.on('sliderequest', function(){
       socket.emit('slidechanged', {'index' : Reveal.getIndices().h, 'room' : room });
 });
 
-
-Reveal.on( 'slidechanged', event => {
+console.log(Reveal)
+Reveal.addEventListener( 'slidechanged', event => {
   // event.previousSlide, event.currentSlide, event.indexh, event.
   console.log(event.indexh);
 

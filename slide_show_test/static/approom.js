@@ -56,8 +56,11 @@ window.addEventListener('load', function() {
     var frameBody = frame.body;
     var scriptElement = frame.createElement('script');
     scriptElement.src = '/static/injection_prof.js';
-	frame.title=document.title;
+	  frame.title=document.title;
     frameBody.appendChild(scriptElement);
+    scriptElement.src = '/static/js/reveal.js';
+    frameBody.appendChild(scriptElement);
+
 
 
 
@@ -66,10 +69,9 @@ window.addEventListener('load', function() {
     var frameBody = frame.body;
     var scriptElement = frame.createElement('script');
     scriptElement.src = '/static/injection_eleve.js';
-	frame.title=document.title
+	  frame.title=document.title
+    frameBody.appendChild(scriptElement);
+    scriptElement.src = '/static/js/reveal.js';
     frameBody.appendChild(scriptElement);
 
 });
-
-
-

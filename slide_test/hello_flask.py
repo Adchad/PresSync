@@ -1,11 +1,13 @@
-import flask 
-import requests 
+import flask
+import requests
 import os
 from flask_socketio import SocketIO
 from time import sleep
 APP = flask.Flask(__name__)
 SITE_NAME = 'https://perso.telecom-paristech.fr/dufourd/cours/'
 socketio = SocketIO(APP)
+SITE_NAME ='http://nicolassauret.net/s_StyloCRIHN/'
+
 
 @APP.route('/proxy/', defaults={'path': ''})
 @APP.route('/proxy/<path:path>')
@@ -59,8 +61,6 @@ def handle_sliderequest():
     emit('sliderequest', broadcast=True)
 
 if __name__ == '__main__':
-  #APP.run(host="0.0.0.0")
-    APP.debug = True
-    socketio.run(APP, host="0.0.0.0")
 
-
+    APP.debug= True
+    socketio.run(APP, host='0.0.0.0', port=8080)
