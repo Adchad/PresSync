@@ -1,22 +1,22 @@
-
-import flask
-from requests import get
-
-from flask_socketio import SocketIO, send, emit
-
+import flask 
+import requests 
+import os
+from flask_socketio import SocketIO
+from time import sleep
 APP = flask.Flask(__name__)
+SITE_NAME = 'https://perso.telecom-paristech.fr/dufourd/cours/'
 socketio = SocketIO(APP)
-SITE_NAME ='https://perso.telecom-paristech.fr/dufourd/cours'
- 
 
-@APP.route('/', defaults={'path': ''})
-@APP.route('/<path:path>')
+@APP.route('/proxy/', defaults={'path': ''})
+@APP.route('/proxy/<path:path>')
 def proxy(path):
-    return get(f'{SITE_NAME}{path}').content
 
-#@APP.route('/')
-#def index():
- #   return flask.render_template('index.html')
+    r = requests.get(f'{SITE_NAME}{path}')
+    return flask.Response(r.content, status=r.status_code, content_type=r.headers['content-type'])
+
+@APP.route('/')
+def index():
+    return flask.render_template('index.html')
 
 
 @APP.route('/student')
@@ -58,10 +58,9 @@ def handle_slidechanged(index):
 def handle_sliderequest():
     emit('sliderequest', broadcast=True)
 
-##Lancement du serv
 if __name__ == '__main__':
-    APP.debug= True
-    socketio.run(APP, host='0.0.0.0', port=8080)
-
+  #APP.run(host="0.0.0.0")
+    APP.debug = True
+    socketio.run(APP, host="0.0.0.0")
 
 
