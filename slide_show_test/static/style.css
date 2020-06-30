@@ -104,3 +104,10 @@ transform: translateX(-9%) translateY(-25%) rotate(45deg);
 	height: 800px;
 	border: 4px solid black;
 }
+
+
+#slides_professeur{
+	width : 1200px;
+	height: 800px;
+	border: 4px solid black;
+}

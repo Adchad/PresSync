@@ -18,11 +18,11 @@ def proxy(id,path):
     return flask.Response(r.content, status=r.status_code, content_type=r.headers['content-type'])
 
 
-
-
-
-
-
+@APP.route('/proxy/', defaults={'path': ''})
+@APP.route('/proxy/<path:path>')
+def proxy_root(path):
+    r = requests.get(f'{SITE_NAME}{path}')
+    return flask.Response(r.content, status=r.status_code, content_type=r.headers['content-type'])
 
 @APP.route('/')
 def index():
