@@ -1,3 +1,9 @@
+body{
+	background-image: url("/static/images/bg2.jpg");
+	background-attachment: fixed; /* Le fond restera fixe */
+
+}
+
 .titre {
 
 	background-color: #d40019;
@@ -144,7 +150,7 @@
 font-size: 2em;
 }
 
-.room {
+.rooms {
 	font-size: 2.5em;
 	margin-top: 3em;
 	text-align:bottom;
