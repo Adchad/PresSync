@@ -43,3 +43,7 @@ des fichiers, relatifs à index.html ou autres, qui représentent les présentat
 
 En effet, il est plus souhaitable qu'un professeur stocke ses fichiers html dans le même dossier, pour ne pas avoir à recopier plusieurs fois le dossier reveal par exemple.
 
+
+## How to
+
+Lancer le script hello_flask.py et connectez-vous à votre local host.
