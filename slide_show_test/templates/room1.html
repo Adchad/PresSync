@@ -39,8 +39,10 @@
 		<script>
 			var titre = prompt("Veuillez entrer le titre de votre présentation :");
 			document.querySelector(".titre_de_page").innerHTML = titre ;
+			
 
       var socket = io();
+	  socket.emit("new_title",{'title':titre, 'room' : document.title});
       var quitter = document.getElementById("btn_leave");
       var num_page = document.title;
       quitter.addEventListener('click', function(){
