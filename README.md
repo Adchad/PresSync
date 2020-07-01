@@ -15,4 +15,11 @@ Imaginez :
 
 ## Screenshots
 
-![](screens/accueil.png)
+![Accueil](screens/accueil.png)
+
+![Création de salle](screens/new_room.png)
+
+![Salles disponibles](screens/mosaique.png)
+
+![Cours en direct](screens/student.png)
+
