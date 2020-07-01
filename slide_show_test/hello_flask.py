@@ -7,17 +7,25 @@ APP = flask.Flask(__name__)
 socketio = SocketIO(APP)
 
 site_list=[]
+html_list=[]
 
 def prev_fold(url):
     L=url.split("/")
     L.pop()
     return "/".join(L)
 
+def prev_pop(url):
+    L=url.split("/")
+    a = L.pop()
+    return "/".join(L), a
+
+
 @APP.route('/proxy/<int:id>/<int:id2>/', defaults={'path': ''})
 @APP.route('/proxy/<int:id>/<int:id2>/<path:path>')
 def proxy(id,id2,path):
-    site = site_list[id-1] + "/"
+    site = site_list[id-1] + "/" 
     r = requests.get(f'{site}{path}')
+    print(site + path)
     return flask.Response(r.content, status=r.status_code, content_type=r.headers['content-type'])
 
 
@@ -49,7 +57,7 @@ def student():
 @APP.route('/room/<id>/')
 def room1(id):
 
-     return flask.render_template('room1.html',id=id)
+     return flask.render_template('room1.html',id=id,html_link=html_list[int(id)-1])
 
 @APP.route('/room/student/<id>/')
 def room1student(id):
@@ -100,7 +108,9 @@ def on_join(room):
 
 @socketio.on('newroom')
 def handle_newroom(url):
-    site_list.append(url)
+    site,html = prev_pop(url)
+    site_list.append(site)
+    html_list.append(html)
     print("room number : " + str(len(site_list)) + "room url : " + url )
     emit('newroomnumber' , str(len(site_list)))
 
