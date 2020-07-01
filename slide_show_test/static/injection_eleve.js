@@ -17,13 +17,14 @@ console.log("script injecté dans l'iframe eleve")
 var socket = io();
 
 const room = document.title;
-var synchronized = false;
+var synchronized = true;
 var desync_protection = false; //quand le présentateur déclenche le changement de slide, il faut préciser que ça ne désync pas l'élève
 socket.emit('join',room);
 
 var bouton = parent.document.getElementById("btn_sync");
 let gif = document.createElement('img');
 gif.src="/static/images/giphy.gif";
+parent.document.body.appendChild(gif);
 
 bouton.addEventListener("change", function () {
     //synchronized = true;
@@ -36,7 +37,7 @@ bouton.addEventListener("change", function () {
       synchronized = true;
     } else{
       console.log("Eleve dé-synchronisé");
-  		parent.document.body.removeChild(gif);
+      parent.document.body.removeChild(gif);
   		synchronized = false;
 	   }
 
@@ -60,7 +61,8 @@ Reveal.addEventListener( 'slidechanged', event => {
     console.log("l'élève se désynchronise");
     synchronized = false
     parent.document.body.removeChild(gif);
-    synchronized = false;
+    parent.document.getElementById("myonoffswitch").checked = false;
+
   } else {
     desync_protection = false;
   }

@@ -58,6 +58,8 @@ window.addEventListener('load', function() {
     scriptElement.src = '/static/injection_prof.js';
 	  frame.title=document.title;
     frameBody.appendChild(scriptElement);
+
+//a voir si nécessaire
     scriptElement.src = '/static/js/reveal.js';
     frameBody.appendChild(scriptElement);
 
