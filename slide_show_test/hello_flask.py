@@ -94,8 +94,6 @@ def handle_newroom(url):
     print("room number : " + str(len(site_list)) + "room url : " + url )
     emit('newroomnumber' , str(len(site_list)))
 
-
-
 ##Lancement du serv
 if __name__ == '__main__':
     APP.debug= True
