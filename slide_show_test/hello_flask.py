@@ -5,7 +5,6 @@ from flask_socketio import SocketIO, send, emit, join_room
 
 APP = flask.Flask(__name__)
 socketio = SocketIO(APP)
-SITE_NAME = 'https://perso.telecom-paristech.fr/dufourd/cours/'
 
 site_list=[]
 
@@ -16,12 +15,6 @@ def proxy(id,path):
     site = site_list[id-1]
     r = requests.get(f'{site}{path}')
     return flask.Response(r.content, status=r.status_code, content_type=r.headers['content-type'])
-
-
-
-
-
-
 
 
 @APP.route('/')
@@ -43,11 +36,6 @@ def profs():
 @APP.route('/student')
 def student():
     return flask.render_template('student.html')
-
-#@APP.route('/hello/<name>/')
-#def hello(name):
-
- #     return flask.render_template('hello.html', name=name)
 
 
 @APP.route('/room/<id>/')
@@ -114,6 +102,3 @@ def handle_newroom(url):
 if __name__ == '__main__':
     APP.debug= True
     socketio.run(APP)
-
-
-
