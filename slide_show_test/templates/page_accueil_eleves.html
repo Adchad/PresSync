@@ -39,10 +39,18 @@ var h,f,l,d=String.fromCharCode;t.exports={version:"2.1.2",encode:a,decode:u}},f
 				
 				for(var i = 0; i < real_list.length ; i++) {
 					let new_iframe = document.createElement('iframe');
+					let new_div = document.createElement('div');
+
 					var j = i + 1;
 					new_iframe.id = "iframe-" + j;
+					new_div.id="div-" + j;
 					new_iframe.src = "/room/student/" + j ;
-					document.body.appendChild(new_iframe);
+					document.body.appendChild(new_div);
+					new_div.appendChild(new_iframe);
+					new_link = document.createElement('a');
+					new_link.href = "/room/student/" + j;
+					new_div.appendChild(new_link);
+
 				}
 			});
 				
