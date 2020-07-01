@@ -46,4 +46,4 @@ En effet, il est plus souhaitable qu'un professeur stocke ses fichiers html dans
 
 ## How to
 
-Lancer le script hello_flask.py et connectez-vous à votre local host.
+Lancer le script src/server.py et connectez-vous à votre local host au port indiqué dans la console python (en général port 5000).
