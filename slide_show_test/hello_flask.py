@@ -17,6 +17,7 @@ def proxy(id,path):
     return flask.Response(r.content, status=r.status_code, content_type=r.headers['content-type'])
 
 
+
 @APP.route('/')
 def index():
     return flask.render_template('index.html')
@@ -28,9 +29,6 @@ def eleves():
 @APP.route('/accueil_profs')
 def profs():
     return flask.render_template('page_accueil_prof.html')
-
-
-
 
 
 @APP.route('/student')
