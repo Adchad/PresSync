@@ -23,7 +23,7 @@ def prev_pop(url):
 @APP.route('/proxy/<int:id>/<int:id2>/', defaults={'path': ''})
 @APP.route('/proxy/<int:id>/<int:id2>/<path:path>')
 def proxy(id,id2,path):
-    site = site_list[id-1] + "/" 
+    site = site_list[id-1] + "/"
     r = requests.get(f'{site}{path}')
     print(site + path)
     return flask.Response(r.content, status=r.status_code, content_type=r.headers['content-type'])
@@ -117,7 +117,7 @@ def handle_newroom(url):
 
 @socketio.on('request_available_rooms')
 def handle_request_available_rooms():
-    emit('available_rooms',json.dumps(site_list))
+    emit('available_rooms',json.dumps(html_list))
 
 @socketio.on('quit_room')
 def handle_quit_room(room):

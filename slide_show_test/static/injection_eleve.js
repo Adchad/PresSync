@@ -70,4 +70,5 @@ Reveal.addEventListener( 'slidechanged', event => {
 } );
 
 
-/* ====>  On rajoute donc un bouton pour qu'il puisse se re-synchroniser */
+/* ====>  A la connexion, l'élève vérifie où est le prof */
+socket.emit('sliderequest',room);
