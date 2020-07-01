@@ -1,3 +1,7 @@
+# ÉLÈVES
+
+## Notice d'utilisation
+
 Connectez-vous sur le site. 
 
 Cliquez sur le bouton 'Elèves' pour accéder à la page d'accueil des élèves.
