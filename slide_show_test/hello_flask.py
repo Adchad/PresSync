@@ -121,8 +121,7 @@ def handle_request_available_rooms():
 
 @socketio.on('quit_room')
 def handle_quit_room(room):
-    site_list.pop(int(room)-1)
-    html_list.pop(int(room)-1)
+    html_list[int(room)-1]="none"
 
 ##Lancement du serv
 if __name__ == '__main__':

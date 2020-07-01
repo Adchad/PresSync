@@ -34,36 +34,40 @@ var h,f,l,d=String.fromCharCode;t.exports={version:"2.1.2",encode:a,decode:u}},f
 			socket.emit('request_available_rooms');
 			socket.on('available_rooms', function(list){
 				var real_list = list.slice(1,-1).split('"').join().split(",").filter(word => word.length > 1);
-				console.log(real_list);
+
+        console.log(real_list)
 
 				for(var i = 0; i < real_list.length ; i++) {
-					let new_iframe = document.createElement('iframe');
-					let new_div = document.createElement('div');
-          //let new_link = document.createElement('a');
 
-					var j = i + 1;
-					new_iframe.id = "iframe-" + j;
-					new_div.id="div-" + j;
-					new_iframe.src = "/proxy/"+i+"/"+i+"/"+real_list[i];
-          new_iframe.height=300;
-          new_iframe.width=600;
+            if(real_list[i]!=="none") {
+              console.log("on affiche la room : " + i)
+              let new_iframe = document.createElement('iframe');
+    					let new_div = document.createElement('div');
+              //let new_link = document.createElement('a');
 
-					new_div.appendChild(new_iframe);
-					//new_link.href = "/room/student/" + j;
-					//new_div.appendChild(new_link);
+    					var j = i + 1;
+    					new_iframe.id = "iframe-" + j;
+    					new_div.id="div-" + j;
+    					new_iframe.src = "/proxy/"+i+"/"+i+"/"+real_list[i];
+              new_iframe.height=300;
+              new_iframe.width=600;
 
-          let html_content = '<a href="/room/student/' + j + '" > <h2> Rejoindre le cours ' + j + '</h2>';
-          //new_div.innerHTML = html_content;
-          document.getElementById("rooms").appendChild(new_div);
+    					new_div.appendChild(new_iframe);
+    					//new_link.href = "/room/student/" + j;
+    					//new_div.appendChild(new_link);
 
-					new_btn = document.createElement("button");
-          new_btn.class="join_btn";
-					new_btn.id="btn-"+j;
-          new_btn.innerHTML = "Rejoindre la salle " + j;
-					new_btn.setAttribute('onclick','location.href="/room/student/'+j+'";');
-					new_div.appendChild(new_btn);
+              let html_content = '<a href="/room/student/' + j + '" > <h2> Rejoindre le cours ' + j + '</h2>';
+              //new_div.innerHTML = html_content;
+              document.getElementById("rooms").appendChild(new_div);
 
+    					new_btn = document.createElement("button");
+              new_btn.class="join_btn";
+    					new_btn.id="btn-"+j;
+              new_btn.innerHTML = "Rejoindre la salle " + j;
+    					new_btn.setAttribute('onclick','location.href="/room/student/'+j+'";');
+    					new_div.appendChild(new_btn);
 
+		       }
 				}
 			});
 
