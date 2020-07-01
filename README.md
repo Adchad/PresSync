@@ -15,4 +15,4 @@ Imaginez :
 
 ## Screenshots
 
-![](screens/acceuil.png)
+![](screens/accueil.png)
