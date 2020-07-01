@@ -32,15 +32,15 @@ var h,f,l,d=String.fromCharCode;t.exports={version:"2.1.2",encode:a,decode:u}},f
 
 
 			var socket = io();
-			socket.emit('request_available_rooms')
+			socket.emit('request_available_rooms');
 			socket.on('available_rooms', function(list){
-					console.log(list);
-          let new_div = document.createElement('div')
-          let new_iframe = document.new_room.createElement('iframe')
-          new_iframe.id = "slides_eleve"
+				var real_list = list.slice(1,-1).split('"').join().split(",").filter(word => word.length > 1);
+				let new_div = document.createElement('div')
+				let new_iframe = document.new_room.createElement('iframe')
+				new_iframe.id = "slides_eleve"
 
 			});
-
+				
 	</script>
 
   <script type="text/javascript">
