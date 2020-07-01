@@ -8,15 +8,25 @@ socketio = SocketIO(APP)
 
 site_list=[]
 
+def prev_fold(url):
+    L=url.split("/")
+    L.pop()
+    return "/".join(L)
 
-@APP.route('/proxy/<int:id>/', defaults={'path': ''})
-@APP.route('/proxy/<int:id>/<path:path>')
-def proxy(id,path):
-    site = site_list[id-1]
+@APP.route('/proxy/<int:id>/<int:id2>/', defaults={'path': ''})
+@APP.route('/proxy/<int:id>/<int:id2>/<path:path>')
+def proxy(id,id2,path):
+    site = site_list[id-1] + "/"
     r = requests.get(f'{site}{path}')
     return flask.Response(r.content, status=r.status_code, content_type=r.headers['content-type'])
 
 
+@APP.route('/proxy/<int:id>/', defaults={'path': ''})
+@APP.route('/proxy/<int:id>/<path:path>')
+def proxy_root(id,path):
+    site = prev_fold(site_list[id-1]) + "/"
+    r = requests.get(f'{site}{path}')
+    return flask.Response(r.content, status=r.status_code, content_type=r.headers['content-type'])
 
 @APP.route('/')
 def index():
