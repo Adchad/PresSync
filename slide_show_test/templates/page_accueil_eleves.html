@@ -47,10 +47,12 @@ var h,f,l,d=String.fromCharCode;t.exports={version:"2.1.2",encode:a,decode:u}},f
 					new_iframe.src = "/room/student/" + j ;
 					document.body.appendChild(new_div);
 					new_div.appendChild(new_iframe);
-					new_link = document.createElement('a');
-					new_link.href = "/room/student/" + j;
-					new_div.appendChild(new_link);
 
+					new_btn = document.createElement("button");
+					new_btn.id="btn-"+j;
+					new_btn.setAttribute('onclick','location.href="/room/student/'+j+'";');
+
+					new_div.appendChild(new_btn);
 				}
 			});
 				
