@@ -62,7 +62,7 @@ def room1(id):
 @APP.route('/room/student/<id>/')
 def room1student(id):
 
-     return flask.render_template('room1_student.html',id=id)
+     return flask.render_template('room1_student.html',id=id,html_link=html_list[int(id)-1])
 
 
 def change_page(page):
