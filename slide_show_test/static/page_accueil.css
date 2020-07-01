@@ -104,7 +104,7 @@ body{
 	}
 
 .prof {
-	position: center;
+
 	display: block;
 	background-color:#d61313;
 	border-radius: 10px;
@@ -158,11 +158,6 @@ font-size: 2em;
 }
 
 .join_btn {
-	margin-top: 4em;
-	margin-left: 13em;
-}
-
-.join_btn {
 	position: center;
 	display: block;
 	background-color:#d61313;
@@ -170,20 +165,22 @@ font-size: 2em;
 	border: 4px double #cccccc;
 	color: #eeeeee;
 	text-align: center;
-	font-size: 28px;
-	padding: 20px;
-	width: 50px;
-	height: 30px;
+	font-size: 0.4em;
+	padding: 0px;
+	width: 150px;
+	height: 60px;
 	transition: all 0.5s;
 	cursor: pointer;
 	margin: auto;
-	margin-top: 2%;
+	margin-top:0;
+	margin-bottom: 2%;
 	}
 .join_btn span {
 	cursor: pointer;
 	display: block;
 	position: relative;
 	transition: 0.5s;
+
 	}
 .join_btn span:after {
 	content: '\00bb';
@@ -199,7 +196,6 @@ font-size: 2em;
 .join_btn:hover span {
 	padding-right: 25px;
 	}
-
 .join_btn:hover span:after {
 	opacity: 1;
 	right: 0;
