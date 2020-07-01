@@ -35,10 +35,7 @@ var h,f,l,d=String.fromCharCode;t.exports={version:"2.1.2",encode:a,decode:u}},f
 			socket.on('available_rooms', function(list){
 				var real_list = list.slice(1,-1).split('"').join().split(",").filter(word => word.length > 1);
 
-        console.log(real_list)
-
 				for(var i = 0; i < real_list.length ; i++) {
-
             if(real_list[i]!=="none") {
               console.log("on affiche la room : " + i)
               let new_iframe = document.createElement('iframe');
@@ -64,13 +61,18 @@ var h,f,l,d=String.fromCharCode;t.exports={version:"2.1.2",encode:a,decode:u}},f
     					new_btn = document.createElement("button");
               new_btn.className="join_btn";
     					new_btn.id="btn-"+j;
-              new_btn.innerHTML = "<span> Rejoindre la salle " + j + "</span>";
+              //new_btn.innerHTML = "<span> Rejoindre la salle " + j + "</span>";
     					new_btn.setAttribute('onclick','location.href="/room/student/'+j+'";');
     					new_div.appendChild(new_btn);
-
+              socket.emit("title_request",j)
 		       }
 				}
 			});
+
+      socket.on("update_title", function(title, room){
+        console.log(title)
+        document.getElementById("btn-"+room).innerHTML = "<span>"+title+"</span>";
+      });
 
 	</script>
 

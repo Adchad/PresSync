@@ -42,13 +42,12 @@
 		<script>
 				var socket = io();
 				socket.emit('join',document.title);
-				socket.emit('title_request',document.title);
+				socket.emit('title_request',document.title)
 				socket.on('room_title', function(title){
 					document.querySelector(".titre_de_page").innerHTML = title;
 				});
 
         socket.on('closed_room', function(room){
-          console.log("aled")
           document.location.href="{{ url_for('index') }}"
 				});
 		</script>

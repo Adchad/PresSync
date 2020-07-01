@@ -119,6 +119,7 @@ def handle_newroom(url):
 def handle_request_available_rooms():
     emit('available_rooms',json.dumps(html_list))
 
+
 @socketio.on('quit_room')
 def handle_quit_room(room):
     html_list[int(room)-1]="none"
@@ -130,13 +131,15 @@ def handle_quit_room(room):
 def handle_new_title(data):
     title_list[int(data['room'])-1] = data['title']
     print(data['title'] + data['room'])
+    emit("update_title", ( title_list[int(data['room'])-1], data['room']), broadcast=True)
+
 
 
 
 @socketio.on('title_request')
 def handle_title_request(room):
      emit("room_title", title_list[int(room)-1]  ,room=room)
-     print("there was a request")
+     emit("update_title", ( title_list[int(room)-1], room), broadcast=True)
 
 
 
