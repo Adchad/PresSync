@@ -7,16 +7,37 @@ APP = flask.Flask(__name__)
 socketio = SocketIO(APP)
 SITE_NAME = 'https://perso.telecom-paristech.fr/dufourd/cours/'
 
-@APP.route('/proxy/', defaults={'path': ''})
-@APP.route('/proxy/<path:path>')
-def proxy(path):
-    r = requests.get(f'{SITE_NAME}{path}')
+site_list=[]
+
+
+@APP.route('/proxy/<int:id>/', defaults={'path': ''})
+@APP.route('/proxy/<int:id>/<path:path>')
+def proxy(id,path):
+    site = site_list[id-1]
+    r = requests.get(f'{site}{path}')
     return flask.Response(r.content, status=r.status_code, content_type=r.headers['content-type'])
 
+
+@APP.route('/proxy/', defaults={'path': ''})
+@APP.route('/proxy/<path:path>')
+def proxy_root(path):
+    r = requests.get(f'{SITE_NAME}{path}')
+    return flask.Response(r.content, status=r.status_code, content_type=r.headers['content-type'])
 
 @APP.route('/')
 def index():
     return flask.render_template('index.html')
+
+@APP.route('/accueil_eleves')
+def eleves():
+    return flask.render_template('page_accueil_eleves.html')
+
+@APP.route('/accueil_profs')
+def profs():
+    return flask.render_template('page_accueil_prof.html')
+
+
+
 
 
 @APP.route('/student')
@@ -81,8 +102,18 @@ def on_join(room):
     emit('messagetest', "room 1 gang !", room="1")
     emit('messagetest', "room 2 gang !", room="2")
 
+@socketio.on('newroom')
+def handle_newroom(url):
+    site_list.append(url)
+    print("room number : " + str(len(site_list)) + "room url : " + url )
+    emit('newroomnumber' , str(len(site_list)))
+
+
 
 ##Lancement du serv
 if __name__ == '__main__':
     APP.debug= True
     socketio.run(APP)
+
+
+

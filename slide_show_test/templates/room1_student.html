@@ -1,20 +1,39 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
 		<link rel="shortcut icon" href="">
-		<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+		<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style_room.css')}}">
 
-		<title>{{id}}</title>
+		<title id="title">{{id}}</title>
     </head>
 
     <body>
-		<button id="btn_sync">Synchronisation</button>
+      <div class="titre">
 
-		<iframe src="/proxy/inf203/index.html" id="slides_eleve"></iframe>
-		<script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>		
+
+                  <img src="/static/images/LogoTP.png"  class="logo">
+
+
+              <span class="titre_de_page">
+                   Cours HTML/CSS et Javascript - JC Dufourd
+              </span>
+
+
+          </div>
+
+		<script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
+
+		<iframe src="/proxy/{{id}}/index.html" id="slides_eleve"></iframe>
+    <div class="onoffswitch" id="btn_sync">
+    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" tabindex="0" checked>
+    <label class="onoffswitch-label" for="myonoffswitch">
+        <span class="onoffswitch-inner"></span>
+        <span class="onoffswitch-switch"></span>
+    </label>
+</div>
+
 
 		<script src="{{ url_for('static', filename='student_app.js')}}"></script>
     </body>
 </html>
-
