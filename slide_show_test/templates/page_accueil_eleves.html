@@ -35,24 +35,18 @@ var h,f,l,d=String.fromCharCode;t.exports={version:"2.1.2",encode:a,decode:u}},f
 			socket.emit('request_available_rooms');
 			socket.on('available_rooms', function(list){
 				var real_list = list.slice(1,-1).split('"').join().split(",").filter(word => word.length > 1);
-				let new_div = document.createElement('div')
-				let new_iframe = document.new_room.createElement('iframe')
-				new_iframe.id = "slides_eleve"
-
+				console.log(real_list);
+				
+				for(var i = 0; i < real_list.length ; i++) {
+					let new_iframe = document.createElement('iframe');
+					var j = i + 1;
+					new_iframe.id = "iframe-" + j;
+					new_iframe.src = "/room/student/" + j ;
+					document.body.appendChild(new_iframe);
+				}
 			});
 				
 	</script>
-
-  <script type="text/javascript">
-
-      for(var i = 0, i < list.length, i++) {
-          let new_div = document.createElement('div')
-          let new_iframe = document.new_room.createElement('iframe')
-          var j = i + 1
-          new_iframe.src = "/room/student/" + j 
-          }
-          
-  </script>
 
   </body>
   </html>
