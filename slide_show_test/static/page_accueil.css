@@ -155,11 +155,12 @@ font-size: 2em;
 	margin-top: 3em;
 	text-align:bottom;
 	font-weight: bold;
+
 }
 
 .join_btn {
-	
-	display: block;
+	margin-left: 0;
+
 	background-color:#d61313;
 	border-radius: 10px;
 	border: 4px double #cccccc;
