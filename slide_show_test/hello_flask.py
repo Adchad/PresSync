@@ -119,6 +119,11 @@ def handle_newroom(url):
 def handle_request_available_rooms():
     emit('available_rooms',json.dumps(site_list))
 
+@socketio.on('quit_room')
+def handle_quit_room(room):
+    site_list.pop(int(room)-1)
+    html_list.pop(int(room)-1)
+
 ##Lancement du serv
 if __name__ == '__main__':
     APP.debug= True
