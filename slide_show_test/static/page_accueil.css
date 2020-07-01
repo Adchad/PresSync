@@ -43,7 +43,7 @@ body{
 
 .question {
 	font-family: "Gill-Sans", sans-serif;
-	font-size: 5em;
+	font-size: 3em;
 	text-align: center;
 	font-style: bold;
 	width: 100%;
@@ -150,7 +150,7 @@ body{
 font-size: 2em;
 }
 
-.room {
+.rooms {
 	font-size: 2.5em;
 	margin-top: 3em;
 	text-align:bottom;

@@ -2,7 +2,7 @@
 import flask
 import requests
 from flask_socketio import SocketIO, send, emit, join_room
-
+import json
 APP = flask.Flask(__name__)
 socketio = SocketIO(APP)
 
@@ -103,6 +103,11 @@ def handle_newroom(url):
     site_list.append(url)
     print("room number : " + str(len(site_list)) + "room url : " + url )
     emit('newroomnumber' , str(len(site_list)))
+
+
+@socketio.on('request_available_rooms')
+def handle_request_available_rooms():
+    emit('available_rooms',json.dumps(site_list))
 
 ##Lancement du serv
 if __name__ == '__main__':
