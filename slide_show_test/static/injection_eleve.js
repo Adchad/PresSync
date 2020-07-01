@@ -24,6 +24,7 @@ socket.emit('join',room);
 var bouton = parent.document.getElementById("btn_sync");
 let gif = document.createElement('img');
 gif.src="/static/images/giphy.gif";
+gif.id = "GIF"
 parent.document.body.appendChild(gif);
 
 bouton.addEventListener("change", function () {
