@@ -8,7 +8,7 @@ socketio = SocketIO(APP)
 
 site_list=[]
 html_list=[]
-
+title_list=["","","","","","","","","","","","","","","","",""]
 def prev_fold(url):
     L=url.split("/")
     L.pop()
@@ -127,8 +127,18 @@ def handle_quit_room(room):
 
 @socketio.on('new_title')
 def handle_new_title(data):
-    emit("room_title",data['title'],room=data['room'])
+    title_list[int(data['room'])-1] = data['title']
     print(data['title'] + data['room']) 
+
+
+
+@socketio.on('title_request')
+def handle_title_request(room):
+     emit("room_title", title_list[int(room)-1]  ,room=room)
+     print("there was a request")
+
+
+
 
 ##Lancement du serv
 if __name__ == '__main__':
