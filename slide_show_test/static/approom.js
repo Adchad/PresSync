@@ -62,7 +62,4 @@ window.addEventListener('load', function() {
 //a voir si nécessaire
     scriptElement.src = '/static/js/reveal.js';
     frameBody.appendChild(scriptElement);
-
-
-
-});
+    });
