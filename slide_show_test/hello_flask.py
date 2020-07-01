@@ -122,12 +122,14 @@ def handle_request_available_rooms():
 @socketio.on('quit_room')
 def handle_quit_room(room):
     html_list[int(room)-1]="none"
+    print("on travaille dans la room "+ room)
+    emit("closed_room", room=room)
 
 
 @socketio.on('new_title')
 def handle_new_title(data):
     title_list[int(data['room'])-1] = data['title']
-    print(data['title'] + data['room']) 
+    print(data['title'] + data['room'])
 
 
 
