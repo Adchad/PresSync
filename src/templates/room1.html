@@ -18,9 +18,6 @@
                    Cours HTML/CSS et Javascript - JC Dufourd
               </span>
 
-              <button class="btn_title" id="btn_title" >
-                <span>Update Title</span>
-              </button>
 
 
 
@@ -32,6 +29,10 @@
             <span>Fermer la room</span>
             </button>
         </a>
+
+          <button class="btn_title" id="btn_title" >
+            <span>Update Title</span>
+          </button>
       </div>
 
 
@@ -43,22 +44,25 @@
 		<script>
       var socket = io();
 
-
+      /* au chargement de la page, le prof rentre un titre, qui est envoyé aux pages élèves*/
 			var titre = prompt("Veuillez entrer le titre de votre présentation :");
 			document.querySelector(".titre_de_page").innerHTML = titre ;
+      socket.emit("new_title",{'title':titre, 'room' : document.title});
+
+      /* Si le professeur clique sur le bouton, le titre est a nouveau envoyé à tous les élèves*/
       document.getElementById("btn_title").addEventListener('click', (event) => {
         console.log("ça marche ??")
         socket.emit("new_title",{'title':document.querySelector(".titre_de_page").innerHTML, 'room' : document.title});
       });
 
-
-	    socket.emit("new_title",{'title':titre, 'room' : document.title});
+      /* Bouton Quitter : la room n'est plus disponible, les eleves et le prof sont envoyés à la page d'accueil */
       var quitter = document.getElementById("btn_leave");
       var num_page = document.title;
       quitter.addEventListener('click', function(){
         console.log("je quitte !")
         socket.emit("quit_room", num_page)
       })
+
 		</script>
 
 

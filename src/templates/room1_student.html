@@ -50,6 +50,11 @@
         socket.on('closed_room', function(room){
           document.location.href="{{ url_for('index') }}"
 				});
+
+        socket.on("update_title", function(title, room){
+          console.log(title)
+          document.querySelector(".titre_de_page").innerHTML = title;
+        });
 		</script>
     </body>
 </html>
