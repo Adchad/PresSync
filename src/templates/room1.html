@@ -14,10 +14,14 @@
 
                   <img src="/static/images/LogoTP.png"  class="logo">
 
-
-              <span class="titre_de_page">
+              <span class="titre_de_page" contenteditable="true">
                    Cours HTML/CSS et Javascript - JC Dufourd
               </span>
+
+              <button class="btn_title" id="btn_title" >
+                <span>Update Title</span>
+              </button>
+
 
 
           </div>
@@ -37,12 +41,18 @@
     <script src="{{ url_for('static', filename='approom.js')}}"></script>
 
 		<script>
+      var socket = io();
+
+
 			var titre = prompt("Veuillez entrer le titre de votre présentation :");
 			document.querySelector(".titre_de_page").innerHTML = titre ;
-			
+      document.getElementById("btn_title").addEventListener('click', (event) => {
+        console.log("ça marche ??")
+        socket.emit("new_title",{'title':document.querySelector(".titre_de_page").innerHTML, 'room' : document.title});
+      });
 
-      var socket = io();
-	  socket.emit("new_title",{'title':titre, 'room' : document.title});
+
+	    socket.emit("new_title",{'title':titre, 'room' : document.title});
       var quitter = document.getElementById("btn_leave");
       var num_page = document.title;
       quitter.addEventListener('click', function(){

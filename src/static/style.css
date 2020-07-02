@@ -159,7 +159,7 @@ transform: translateX(-9%) translateY(-25%) rotate(45deg);
     right: 0px;
 }
 
-.btn_leave {
+.btn_leave, .btn_title {
   margin-left: 0;
 
   background-color:#0a0a0a;
@@ -177,14 +177,14 @@ transform: translateX(-9%) translateY(-25%) rotate(45deg);
   margin-top:2.5%;
   margin-bottom: 2%;
   }
-.btn_leave span {
+.btn_leave span, .btn_title span {
   cursor: pointer;
   display: block;
   position: relative;
   transition: 0.5s;
 
   }
-.btn_leave span:after {
+.btn_leave span:after, .btn_title span:after {
   content: '\00bb';
   position: absolute;
   opacity: 0;
@@ -192,13 +192,13 @@ transform: translateX(-9%) translateY(-25%) rotate(45deg);
   right: 20px;
   transition: 0.5s;
   }
-.btn_leave:hover {
+.btn_leave:hover, .btn_title:hover {
   background-color: #403f3f;
   }
-.btn_leave:hover span {
+.btn_leave:hover span, .btn_title:hover span {
   padding-right: 15px;
   }
-.btn_leave:hover span:after {
+.btn_leave:hover span:after, .btn_title:hover span:after {
   opacity: 1;
   right: 5px;
   }
