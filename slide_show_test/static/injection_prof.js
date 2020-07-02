@@ -14,23 +14,16 @@ const room = document.title;
 
 console.log("script injecté dans l'iframe prof")
 
-socket.on('messagetest', function(message){
-		console.log(message);});
+socket.emit('join',room); //socket de test serveur
 
-socket.emit('join',room);
+/* à la demande de l'élève, le serveur demande au prof la slide current */
 socket.on('sliderequest', function(){
       socket.emit('slidechanged', {'index' : Reveal.getIndices().h, 'room' : room });
 });
 
-console.log(Reveal)
+/* Lorsque le prof change de slide, il en informe les eleves, qui suivent s'ils sont synchros*/
 Reveal.addEventListener( 'slidechanged', event => {
   // event.previousSlide, event.currentSlide, event.indexh, event.
-  console.log(event.indexh);
-
   //j'écris une fonction pour un événement slidechanged en python
   socket.emit('slidechanged', {'index' : event.indexh , 'room' : room } );
-
-  //socket.on('my response', console.log("Tout va bien, on a la réponse"))
-  //faut-il toujours un callback, si jamais la requête se perd ?
-
 } );

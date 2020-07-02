@@ -131,7 +131,7 @@ def handle_quit_room(room):
 def handle_new_title(data):
     title_list[int(data['room'])-1] = data['title']
     print(data['title'] + data['room'])
-    emit("update_title", ( title_list[int(data['room'])-1], data['room']), broadcast=True)
+    #emit("update_title", ( title_list[int(data['room'])-1], data['room']), broadcast=True)
 
 
 
