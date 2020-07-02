@@ -45,17 +45,18 @@ def profs():
 def eleves():
     return flask.render_template('page_accueil_eleves.html')
 
-
+#Page innaccessible, pour tester le pov student
 @APP.route('/student')
 def student():
     return flask.render_template('student.html')
 
-
+#Page de présentation du prof
 @APP.route('/room/<id>/')
 def room1(id):
 
      return flask.render_template('room1.html',id=id,html_link=html_list[int(id)-1])
 
+#Page de présentation des élèves
 @APP.route('/room/student/<id>/')
 def room1student(id):
 
