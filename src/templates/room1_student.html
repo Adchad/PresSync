@@ -24,7 +24,13 @@
 
     		<script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
 
-			<iframe src="/proxy/{{id}}/{{id}}/{{html_link}}" id="slides_eleve"></iframe>
+        <a href="/accueil_eleves">
+            <button class="btn_title" id="bouton_retour" >
+              <span>Retour aux choix des cours</span>
+            </button>
+        </a>
+
+      <iframe src="/proxy/{{id}}/{{id}}/{{html_link}}" id="slides_eleve"></iframe>
         <div class="onoffswitch" id="btn_sync">
 
             <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" tabindex="0" checked>
@@ -55,6 +61,7 @@
           console.log(title)
           document.querySelector(".titre_de_page").innerHTML = title;
         });
+
 		</script>
     </body>
 </html>
